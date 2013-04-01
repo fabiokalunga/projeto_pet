@@ -1,0 +1,23 @@
+    {% extends "/templates/base.html" %} {% block head %}
+    <script type="text/javascript" src="/static/js/meuscript.js"></script>
+    {% endblock %} {% block content %}
+
+    <div id="content">
+        <h1>Contato</h1>
+
+        <form enctype="application/x-www-form-urlencoded" method="post" action="/page/contact/contact"><dl class="zend_form">
+            <dt id="name-label"><label for="name" class="required">Seu nome:</label></dt>
+            <dd id="name-element">
+                <input type="text" name="name" id="name" value="" size="30" class="k-textbox"></dd>
+            <dt id="email-label"><label for="email" class="required">Seu E-mail:</label></dt>
+            <dd id="email-element">
+                <input type="text" name="email" id="email" value="" size="30" class="k-textbox"></dd>
+            <dt id="message-label"><label for="message" class="required">Mensagem:</label></dt>
+            <dd id="message-element">
+                <textarea name="message" id="message" cols="50" rows="4" class="k-area"></textarea></dd>
+            <dt id="submit-label">&#160;</dt><dd id="submit-element">
+            <input type="submit" name="submit" id="submit" value="Enviar" class="k-button"></dd></dl></form>
+    </div>
+    <div id="rightcolumn">
+
+    {% endblock %}
