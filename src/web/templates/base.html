@@ -3,10 +3,9 @@
 <head>
     <title>Projeto BDInt da Fatec</title>
 
-    <link type="text/css" rel="stylesheet" href="/static/css/base.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/catalog.css"/>
-    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="../static/css/base.css"/>
+    <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.css"/>
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -15,53 +14,14 @@
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
-            <a href="" class="brand">Postal</a>
             <ul class="nav">
                 <li {% if selected_tab=="HOME" %}class="active" {% endif %}><a href="/">Home</a></li>
-                <li {% if selected_tab=="logista" %}class="active" {% endif %} ><a href="lojista.html">Area do Lojista</a></li>
-                <li {% if selected_tab=="produto" %}class="active" {% endif %} ><a href="produto.html">Produtos</a></li>
-                <li {% if selected_tab=="contato" %}class="active" {% endif %} ><a href="contato.html">Contato</a></li>
+                <li {% if selected_tab=="logista" %}class="active" {% endif %} ><a href="/lojista">Area do Lojista</a></li>
+                <li {% if selected_tab=="produto" %}class="active" {% endif %} ><a href="/produto">Produtos</a></li>
+                <li {% if selected_tab=="contato" %}class="active" {% endif %} ><a href="/contato">Contato</a></li>
 -               </ul>
         </div>
     </div>
-</div>
-<div id="leftcolumn">
-
-
-
-    <section id="menu-catalog">
-        ﻿<ul id="left-menu" class="catalog-nav">
-              <li><a href="/lista?category=1">Coleiras<ul></ul></a></li>
-              <li><a href="/listat?category=2">Guias<ul></ul></a></li>
-              <li><a href="/lista?category=5">Colar (Enforcador)<ul></ul></a></li>
-              <li><a href="/lista?category=6">Peitoral<ul></ul></a></li>
-              <li><a href="/lista?category=7">Brinquedo<ul></ul></a></li>
-              <li><a href="/lista?category=8">Cintos de Segurança<ul></ul></a></li>
-              <li><a href="/lista?category=9">Colar Elizabetano<ul></ul></a></li>
-              <li><a href="/lista?category=10">Conjuntos<ul></ul></a></li>
-              <li><a href="/lista?category=11">Eletrônicos<ul></ul></a></li>
-              <li><a href="/lista?category=12">Banho e Tosa<ul></ul></a></li><ul>
-        <script> $("#left-menu").kendoTreeView()</script>
-    </section>
-
-</div>
-<div id="rightcolumn">
-
-    <!-- AddThis Button BEGIN -->
-    <div class="addthis_toolbox addthis_default_style ">
-        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-        <a class="addthis_counter addthis_pill_style"></a>
-    </div>
-    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5021eae8310a63d5"></script>
-    <!-- AddThis Button END -->
-
-    <ul>
-        <li><a href="/lojista/ondeencontrar/lojista"><img border="0" src="/media/banners/banner_ondeencontrar.png"/></a></li>
-        <li><a href="/catalog/category/list"><img border="0" src="/media/banners/banner_catalogo.png"/></a></li>
-        <li><a href="/lojista/central/lojista"><img border="0" src="/media/banners/banner_arealojista.png"/></a></li>
-        <li><a href="/page/contact/contact"><img border="0" src="/media/banners/banner_contato.png"/></a></li>
-    </ul>
-</div>
 </div>
 
 

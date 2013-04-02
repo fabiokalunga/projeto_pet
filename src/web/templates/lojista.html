@@ -3,76 +3,85 @@
 
 {% block content %}
 
-    {% include "/templates/footer.html" %}
 <div id="content">
     ﻿<h1>Lojista</h1>
     <h2>Onde encontrar</h2>
 
 
-    <div style="background:url("/stact/img/mapbrasil.png") no-repeat right;">
+    <div style="background:url('../static/img/mapbrasil.png') no-repeat right;">
         <ul class="lista-lojistas">
             <p>Deseja saber onde encontrar um produto específico?<br/>
                 Informe seus dados abaixo e retornaremos com <br/>
                 o Lojista mais próximo de você.
             </p>
 
-            <form id="frmOndeEncontrar" action="/lojista/ondeencontrar/lojista/" method="post">
+            <form id="frmOndeEncontrar" action="/" method="post">
                 <dt>
                     <legend>Produto desejado:</legend>
                 </dt>
                 <dd>
-                    <select name="produto" class="k-selectbox" required validationMessage="Selecione um produto desejado">
-                        <option>Selecione</option>
-                        <option value="Coleira KRL">Coleira KRL</option>
-                        <option value="Colar de Poliester">Colar de Poliester</option>
-                        <option value="Guia Unificada">Guia Unificada</option>
-                        <option value="Guia PLST/STD">Guia PLST/STD</option>
-                        <option value="Guia V">Guia V</option>
-                        <option value="Coleira Cabresto">Coleira Cabresto</option>
-                        <option value="Peitoral com Regulagem">Peitoral com Regulagem</option>
-                        <option value="Cinto de Segurança">Cinto de Segurança</option>
-                        <option value="Guia Trançada LX">Guia Trançada LX</option>
-                        <option value="Guia Astúrias">Guia Astúrias</option>
-                        <option value="Peitoral Regulável Astúrias">Peitoral Regulável Astúrias</option>
-                        <option value="Guia Banho e Tosa">Guia Banho e Tosa</option>
-                        <option value="Guia Algodão LX">Guia Algodão LX</option>
-                        <option value="Peitoral de Treinamento">Peitoral de Treinamento</option>
-                        <option value="Brinquedo Caça Filhote">Brinquedo Caça Filhote</option>
-                        <option value="Colar Elizabetano">Colar Elizabetano</option>
-                        <option value="Guia Elite K-9">Guia Elite K-9</option>
-                        <option value="Coleira Astúrias">Coleira Astúrias</option>
-                    </select>
+                    <label>
+                        <select name="produto" class="k-selectbox" required
+                                validationMessage="Selecione um produto desejado">
+                            <option>Selecione</option>
+                            <option value="Coleira KRL">Coleira KRL</option>
+                            <option value="Colar de Poliester">Colar de Poliester</option>
+                            <option value="Guia Unificada">Guia Unificada</option>
+                            <option value="Guia PLST/STD">Guia PLST/STD</option>
+                            <option value="Guia V">Guia V</option>
+                            <option value="Coleira Cabresto">Coleira Cabresto</option>
+                            <option value="Peitoral com Regulagem">Peitoral com Regulagem</option>
+                            <option value="Cinto de Segurança">Cinto de Segurança</option>
+                            <option value="Guia Trançada LX">Guia Trançada LX</option>
+                            <option value="Guia Astúrias">Guia Astúrias</option>
+                            <option value="Peitoral Regulável Astúrias">Peitoral Regulável Astúrias</option>
+                            <option value="Guia Banho e Tosa">Guia Banho e Tosa</option>
+                            <option value="Guia Algodão LX">Guia Algodão LX</option>
+                            <option value="Peitoral de Treinamento">Peitoral de Treinamento</option>
+                            <option value="Brinquedo Caça Filhote">Brinquedo Caça Filhote</option>
+                            <option value="Colar Elizabetano">Colar Elizabetano</option>
+                            <option value="Guia Elite K-9">Guia Elite K-9</option>
+                            <option value="Coleira Astúrias">Coleira Astúrias</option>
+                        </select>
+                    </label>
                 </dd>
                 <dt>
                     <legend>Seu Nome:</legend>
                 </dt>
                 <dd>
-                    <input type="text" class="k-textbox" name="nome" value="" placeholder="Seu Nome" required validationMessage="Preencha com seu nome {0}"/>
+                    <label>
+                        <input type="text" class="k-textbox" name="nome" value="" placeholder="Seu Nome" required
+                               validationMessage="Preencha com seu nome {0}"/>
+                    </label>
                 </dd>
                 <dt>
                     <legend>Telefone:</legend>
                 </dt>
                 <dd>
-                    <input type="text" class="k-textbox" id="telefone" name="telefone" value="" placeholder="Entre com seu telefone" required
+                    <label for="telefone"></label><input type="text" class="k-textbox" id="telefone" name="telefone" value="" placeholder="Entre com seu telefone" required
                            validationMessage="Entre com seu telefone"/>
                 </dd>
                 <dt>
                     <legend>Celular:</legend>
                 </dt>
                 <dd>
-                    <input type="text" class="k-textbox" id="celular" name="celular" value=""/>
+                    <label for="celular"></label><input type="text" class="k-textbox" id="celular" name="celular" value=""/>
                 </dd>
                 <dt>
                     <legend>E-mail:</legend>
                 </dt>
                 <dd>
-                    <input type="text" class="k-textbox" name="email" value="" placeholder="ex. teste@k9spirit.com.br"  validationMessage="Preencha seu e-mail" required data-email-msg="Email inválido"/>
+                    <label>
+                        <input type="text" class="k-textbox" name="email" value=""
+                               placeholder="ex. teste@kalungaspetshop.com.br" validationMessage="Preencha seu e-mail" required
+                               data-email-msg="Email inválido"/>
+                    </label>
                 </dd>
                 <dt>
                     <legend>Estado:</legend>
                 </dt>
                 <dd>
-                    <select id="estado" name="estado" value="" required validationMessage="Selecione um estado"/></select>
+                    <select id="estado" name="estado" value="" required validationMessage="Selecione um estado"></select></select>
                 </dd>
                 <dt>
                     <legend>Cidade:</legend>
@@ -96,9 +105,10 @@
                 <dt>
                     <legend>Observações:</legend>
                 <p>Insira suas observações a respeito do produto desejado, tais como: cor, tamanho, etc...</p>
-                </dt>
                 <dd>
-                    <textarea name="observacoes" class="k-textarea"></textarea>
+                    <label>
+                        <textarea name="observacoes" class="k-textarea"></textarea>
+                    </label>
                 </dd>
                 <dd>
                     <p class="status"></p>
@@ -110,5 +120,6 @@
 
             </form>
         </ul>
+    </div>
     </div>
 {% endblock %}
