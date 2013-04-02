@@ -3,13 +3,26 @@
 <head>
     <title>Projeto BDInt da Fatec</title>
 
-    <link type="text/css" rel="stylesheet" href="../static/css/base.css"/>
-    <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.css"/>
-    <script type="text/javascript" src="../static/js/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/css/default.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/catalog.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
-<img id="loader" src="/src/web/static/img/logo.gif">
+<div id="wrapper">
+    <div id="header">
+        <img src="/static/img/logo.gif">
+
+
+        <div id="busca-top">
+            <form action="/catalog/product/list" method="get">
+                <input type="text" name="nome" value="" class="input-busca" placeholder="Buscar um produto">
+                <input type="submit" value="Ok" class="k-button button-busca" />
+            </form>
+        </div>
+    </div>
+
 {% macro create_navbar(selected_tab="HOME") %}
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
@@ -23,7 +36,6 @@
         </div>
     </div>
 </div>
-
 
 
 </div>
