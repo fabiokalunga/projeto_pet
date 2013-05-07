@@ -1,8 +1,28 @@
-    {% extends "/templates/base.html" %} {% block head %}
-    <script type="text/javascript" src="/static/js/meuscript.js"></script>
-    {% endblock %} {% block content %}
+{% extends "/templates/base.html" %} {% block head %}
+<script type="text/javascript" src="/static/js/meuscript.js"></script>
+{% endblock %} {% block content %}
 
-    <div id="content">
+<div class="row">
+
+    <div class="span3">
+        <section id="menu-catalog">
+            <ul id="left-menu" class="catalog-nav">
+                <li><a href="lista">Coleiras<ul></ul></a></li>
+                <li><a href="lista">Guias<ul></ul></a></li>
+                <li><a href="lista">Colar (Enforcador)<ul></ul></a></li>
+                <li><a href="lista">Peitoral<ul></ul></a></li>
+                <li><a href="lista">Brinquedo<ul></ul></a></li>
+                <li><a href="lista">Cintos de Segurança<ul></ul></a></li>
+                <li><a href="lista">Colar Elizabetano<ul></ul></a></li>
+                <li><a href="lista">Conjuntos<ul></ul></a></li>
+                <li><a href="lista">Eletrônicos<ul></ul></a></li>
+                <li><a href="lista">Banho e Tosa<ul></ul></a></li>
+                <ul>
+                    <script> $("#left-menu").kendoTreeView()</script>
+        </section>
+    </div>
+
+    <div CLASS="span4">
         <h1>Contato</h1>
 
         <form enctype="application/x-www-form-urlencoded" method="post" action="/page/contact/contact"><dl class="zend_form">
@@ -19,5 +39,6 @@
             <input type="submit" name="submit" id="submit" value="Enviar" class="k-button"></dd></dl></form>
     </div>
     <div id="rightcolumn">
+</div>
 </div>
     {% endblock %}

@@ -1,0 +1,175 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+{% block head %}
+<script type="text/javascript">
+
+        function apagarEstado() {
+            var urlBase="{{ apagar_url }}/";
+            var estadoId=$(this).attr("data-id")
+            var loader=$("img[data-id="+ estadoId +"]")
+            loader.fadeIn();
+            alert(estadoId);
+            function apagarLinha(){
+                $('tr[data-id='+estadoId+']').fadeOut();
+            }
+
+            $.post(urlBase+estadoId,apagarLinha).error(function(){
+               alert("Deu erro ao apagar Produto")
+            });
+        }
+        $(document).ready(function(){
+            $(".btn-erase").click(apagarEstado);
+            $(".loader").hide();
+        });
+
+
+        function Pager(tableName, itemsPerPage) {
+            this.tableName = tableName;
+            this.itemsPerPage = itemsPerPage;
+            this.currentPage = 1;
+            this.pages = 0;
+            this.inited = false;
+
+            this.showRecords = function(from, to) {
+                var rows = document.getElementById(tableName).rows;
+                // i starts from 1 to skip table header row
+                for (var i = 1; i < rows.length; i++) {
+                    if (i < from || i > to)
+                        rows[i].style.display = 'none';
+                    else
+                        rows[i].style.display = '';
+                }
+            }
+
+            this.showPage = function(pageNumber) {
+                if (! this.inited) {
+                    alert("not inited");
+                    return;
+                }
+
+                var oldPageAnchor = document.getElementById('pg'+this.currentPage);
+                oldPageAnchor.className = 'pg-normal';
+
+                this.currentPage = pageNumber;
+                var newPageAnchor = document.getElementById('pg'+this.currentPage);
+                newPageAnchor.className = 'pg-selected';
+
+                var from = (pageNumber - 1) * itemsPerPage + 1;
+                var to = from + itemsPerPage - 1;
+                this.showRecords(from, to);
+            }
+
+            this.prev = function() {
+                if (this.currentPage > 1)
+                    this.showPage(this.currentPage - 1);
+            }
+
+            this.next = function() {
+                if (this.currentPage < this.pages) {
+                    this.showPage(this.currentPage + 1);
+                }
+            }
+
+            this.init = function() {
+                var rows = document.getElementById(tableName).rows;
+                var records = (rows.length - 1);
+                this.pages = Math.ceil(records / itemsPerPage);
+                this.inited = true;
+            }
+
+            this.showPageNav = function(pagerName, positionId) {
+                if (! this.inited) {
+                    alert("not inited");
+                    return;
+                }
+                var element = document.getElementById(positionId);
+
+                var pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-ctrl"> &#171 </span>';
+                for (var page = 1; page <= this.pages; page++)
+                    pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span>';
+                pagerHtml += '<span onclick="'+pagerName+'.next();" class="pg-ctrl"> &#187;</span>';
+
+                element.innerHTML = pagerHtml;
+            }
+        }
+
+
+    </script>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+
+    <div class="span3">
+        <section id="menu-catalog">
+            <ul id="left-menu" class="catalog-nav">
+                <li><a href="lista">Coleiras<ul></ul></a></li>
+                <li><a href="lista">Guias<ul></ul></a></li>
+                <li><a href="lista">Colar (Enforcador)<ul></ul></a></li>
+                <li><a href="lista">Peitoral<ul></ul></a></li>
+                <li><a href="lista">Brinquedo<ul></ul></a></li>
+                <li><a href="lista">Cintos de Segurança<ul></ul></a></li>
+                <li><a href="lista">Colar Elizabetano<ul></ul></a></li>
+                <li><a href="lista">Conjuntos<ul></ul></a></li>
+                <li><a href="lista">Eletrônicos<ul></ul></a></li>
+                <li><a href="lista">Banho e Tosa<ul></ul></a></li>
+                <ul>
+                    <script> $("#left-menu").kendoTreeView()</script>
+        </section>
+    </div>
+
+    <div CLASS="span8">
+<br/><br/>
+        <td><a class="btn btn-primary" href="/geo/produto/form" >Novo Produto</a></td>
+<br/><br/>
+
+<table id="tb1">
+    <thead>
+    <tr>
+        <th>Imagem</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Descricao</th>
+        <th>Codigo</th>
+        <th>Preco</th>
+
+
+    </tr>
+    </thead>
+    {% for e in estados %}
+    <tr data-id="{{ e.key.id() }}">
+
+        <td><img  src="/static/img/noimage.jpg"/></td>
+        <td>{{ e.key.id() }}</td>
+        <td>{{ e.nome }}</td>
+        <td>{{ e.categ }}</td>
+        <td>{{ e.sigla }}</td>
+        <td>{{ e.ddd }}</td>
+        <td>{{ e.preco }}</td>
+        <td><a class="btn btn-primary" href="{{ editar_url }}/{{ e.key.urlsafe() }}" >Editar</a></td>
+        <td><button  class="btn btn-danger btn-erase" data-id="{{ e.key.id() }}">Apagar</button></td>
+        <td><img data-id="{{ e.key.id() }}" class="loader" src="/static/img/blueloader.gif" /></td>
+
+    </tr>
+    {% endfor %}
+
+
+</table>
+<br>
+<!-- div onde ser� criados os links da pagina��o -->
+<div id="pageNav"></div>
+<script>
+    var pager = new Pager('tb1', 2);
+    pager.init();
+    pager.showPageNav('pager', 'pageNav');
+    pager.showPage(1);
+</script>
+        </div>
+
+
+    </div>
+
+
+
+    {% endblock %}

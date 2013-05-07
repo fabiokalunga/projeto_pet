@@ -1,0 +1,58 @@
+{% extends "/templates/base.html" %}
+{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+{% block content %}
+{% set estado=estado or None %}
+<div class="row">
+
+    <div class="span3">
+        <section id="menu-catalog">
+            <ul id="left-menu" class="catalog-nav">
+                <li><a href="lista">Coleiras<ul></ul></a></li>
+                <li><a href="lista">Guias<ul></ul></a></li>
+                <li><a href="lista">Colar (Enforcador)<ul></ul></a></li>
+                <li><a href="lista">Peitoral<ul></ul></a></li>
+                <li><a href="lista">Brinquedo<ul></ul></a></li>
+                <li><a href="lista">Cintos de Segurança<ul></ul></a></li>
+                <li><a href="lista">Colar Elizabetano<ul></ul></a></li>
+                <li><a href="lista">Conjuntos<ul></ul></a></li>
+                <li><a href="lista">Eletrônicos<ul></ul></a></li>
+                <li><a href="lista">Banho e Tosa<ul></ul></a></li>
+                <ul>
+                    <script> $("#left-menu").kendoTreeView()</script>
+        </section>
+    </div>
+
+    <div CLASS="span8">
+
+<form action="{{ save_url }}" method="post" >
+    <fieldset>
+        <legend>Cadastro de Produtos</legend>
+
+        Nome: <input type="text" name="nome" value="{{ estado.nome }}" /><br/>
+        Categoria: <input type="text" name="categ" value="{{ estado.categ }}" /><br/>
+        Descricao: <input type="text" name="sigla" value="{{ estado.sigla }}" /><br/>
+        Preco: <input type="text" name="preco" value="{{ estado.preco }}" /><br/>
+        <br />
+        Codigo:<input type="text" name="ddd" value="{{ estado.ddd }}" />
+        {% if estado %}
+        <input type="hidden" name="id" value="{{ estado.key.id() }}" />
+        {% endif %}
+    </fieldset>
+    <button>Salvar</button>
+</form>
+</div>
+
+<div class="span3">
+    <ul>
+        <li><a href="/lojista"><img border="0" src="/static/img/banner_ondeencontrar.png"/></a></li>
+        <li><a href="/lista"><img border="0" src="/static/img/banner_catalogo.png"/></a></li>
+        <li><a href="/login"><img border="0" src="/static/img/banner_arealojista.png"/></a></li>
+        <li><a href="/contato"><img border="0" src="/static/img/banner_contato.png"/></a></li>
+    </ul>
+</div>
+
+</div>
+
+
+
+{% endblock %}

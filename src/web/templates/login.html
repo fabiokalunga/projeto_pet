@@ -1,0 +1,67 @@
+{% extends "/templates/base.html" %} {% block head %}
+<script type="text/javascript" src="/static/js/meuscript.js"></script>
+{% endblock %} {% block content %}
+
+<div class="row">
+
+    <div class="span3">
+        <section id="menu-catalog">
+            <ul id="left-menu" class="catalog-nav">
+                <li><a href="lista">Coleiras<ul></ul></a></li>
+                <li><a href="lista">Guias<ul></ul></a></li>
+                <li><a href="lista">Colar (Enforcador)<ul></ul></a></li>
+                <li><a href="lista">Peitoral<ul></ul></a></li>
+                <li><a href="lista">Brinquedo<ul></ul></a></li>
+                <li><a href="lista">Cintos de Segurança<ul></ul></a></li>
+                <li><a href="lista">Colar Elizabetano<ul></ul></a></li>
+                <li><a href="lista">Conjuntos<ul></ul></a></li>
+                <li><a href="lista">Eletrônicos<ul></ul></a></li>
+                <li><a href="lista">Banho e Tosa<ul></ul></a></li>
+                <ul>
+                    <script> $("#left-menu").kendoTreeView()</script>
+        </section>
+    </div>
+
+    <div CLASS="span9">
+
+                            ﻿<h1>Área do Lojista</h1>
+                            <p>Através da Área do Lojista, você lojista, poderá solicitar orçamentos, enviar pedidos e acompanhar seu histórico de relacionamento.</p>
+
+                            <table width="100%" cellspacing="5" cellpadding="5">
+                                <tr>
+                                    <td valign="top">
+                                        <h3>Acesse a Área do Lojista</h3>
+                                        <p>Se já é um Lojista cadastrado,<br/> acesse abaixo:</p>
+
+                                        <form enctype="application/x-www-form-urlencoded" method="post" action="/login"><dl class="zend_form">
+                                            <dt id="email-label"><label for="email" class="required">E-mail:</label></dt>
+                                            <dd id="email-element">
+                                                <input type="text" name="email" id="email" value="" size="40" class="k-textbox"></dd>
+                                            <dt id="password-label"><label for="password" class="required">Senha:</label></dt>
+                                            <dd id="password-element">
+                                                <input type="password" name="password" id="password" value="" class="k-textbox"></dd>
+                                            <dt id="submit-label">&#160;</dt><dd id="submit-element">
+                                            <input type="submit" name="submit" id="submit" value="Entrar" class="k-button"></dd></dl></form>
+                                    </td>
+
+                                    <td valign="top">
+                                        <h3>Cadastre-se!</h3>
+                                        <p>Ainda não possui cadastro? <br/><a href="/cadastro" class="k-button">Clique aqui</a> e cadastre-se!</p>
+                                    </td>
+                                </tr>
+                            </table>﻿
+                        </div>
+                        <div id="rightcolumn">
+
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                            </div>
+                            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5021eae8310a63d5"></script>
+                            <!-- AddThis Button END -->
+                        </div>
+
+</div>
+
+    {% endblock %}

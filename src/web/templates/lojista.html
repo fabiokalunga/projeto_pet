@@ -1,13 +1,30 @@
-{% extends "/templates/base.html" %}
-{% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
+{% extends "/templates/base.html" %} {% block head %}
+<script type="text/javascript" src="/static/js/meuscript.js"></script>
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="row">
 
-<div id="content">
-    ﻿<h1>Lojista</h1>
-    <h2>Onde encontrar</h2>
+    <div class="span3">
+        <section id="menu-catalog">
+            <ul id="left-menu" class="catalog-nav">
+                <li><a href="lista">Coleiras<ul></ul></a></li>
+                <li><a href="lista">Guias<ul></ul></a></li>
+                <li><a href="lista">Colar (Enforcador)<ul></ul></a></li>
+                <li><a href="lista">Peitoral<ul></ul></a></li>
+                <li><a href="lista">Brinquedo<ul></ul></a></li>
+                <li><a href="lista">Cintos de Segurança<ul></ul></a></li>
+                <li><a href="lista">Colar Elizabetano<ul></ul></a></li>
+                <li><a href="lista">Conjuntos<ul></ul></a></li>
+                <li><a href="lista">Eletrônicos<ul></ul></a></li>
+                <li><a href="lista">Banho e Tosa<ul></ul></a></li>
+                <ul>
+                    <script> $("#left-menu").kendoTreeView()</script>
+        </section>
+    </div>
 
-<h4>
+    <div CLASS="span9">
+    <h2>Lojista - Onde encontrar</h2>
+
     <div style="background:url('../static/img/mapbrasil.png') no-repeat right;">
         <ul class="lista-lojistas">
             <p>Deseja saber onde encontrar um produto específico?<br/>
@@ -78,7 +95,7 @@
                     </label>
                 </dd>
                 <dt>
-                    <legend>Estado:</legend>
+                    <legend>Produto:</legend>
                 </dt>
                 <dd>
                     <select id="estado" name="estado" value="" required validationMessage="Selecione um estado"></select></select>
@@ -122,6 +139,7 @@
         </ul>
 
     </div>
-</h4>
+
+</div>
 </div>
 {% endblock %}

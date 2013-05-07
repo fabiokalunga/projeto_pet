@@ -1,0 +1,103 @@
+{% extends "/templates/base.html" %} {% block head %}
+<script type="text/javascript" src="/static/js/meuscript.js"></script>
+{% endblock %} {% block content %}
+
+<div class="row">
+
+    <div class="span3">
+        <section id="menu-catalog">
+            <ul id="left-menu" class="catalog-nav">
+                <li><a href="lista">Coleiras<ul></ul></a></li>
+                <li><a href="lista">Guias<ul></ul></a></li>
+                <li><a href="lista">Colar (Enforcador)<ul></ul></a></li>
+                <li><a href="lista">Peitoral<ul></ul></a></li>
+                <li><a href="lista">Brinquedo<ul></ul></a></li>
+                <li><a href="lista">Cintos de Segurança<ul></ul></a></li>
+                <li><a href="lista">Colar Elizabetano<ul></ul></a></li>
+                <li><a href="lista">Conjuntos<ul></ul></a></li>
+                <li><a href="lista">Eletrônicos<ul></ul></a></li>
+                <li><a href="lista">Banho e Tosa<ul></ul></a></li>
+                <ul>
+                    <script> $("#left-menu").kendoTreeView()</script>
+        </section>
+    </div>
+
+    <div CLASS="span9">
+    ﻿<h1>Área do Lojista</h1>
+    <h2>Cadastro</h2>
+
+    <form enctype="application/x-www-form-urlencoded" action="/lojista/cadastro/create" method="post"><dl class="zend_form">
+        <dt id="nomeloja-label"><label for="nomeloja" class="optional">Nome da Loja:</label></dt>
+        <dd id="nomeloja-element">
+            <input type="text" name="nomeloja" id="nomeloja" value="" class="k-textbox"></dd>
+        <dt id="razaosocial-label"><label for="razaosocial" class="required">Razão Social:</label></dt>
+        <dd id="razaosocial-element">
+            <input type="text" name="razaosocial" id="razaosocial" value="" class="k-textbox"></dd>
+        <dt id="cnpj-label"><label for="cnpj" class="required">CNPJ:</label></dt>
+        <dd id="cnpj-element">
+            <input type="text" name="cnpj" id="cnpj" value="" class="k-textbox"></dd>
+        <dt id="insc-label"><label for="insc" class="required">Insc. Estadual:</label></dt>
+        <dd id="insc-element">
+            <input type="text" name="insc" id="insc" value="" class="k-textbox"></dd>
+        <dt id="adress-label"><label for="adress" class="required">Endereco:</label></dt>
+        <dd id="adress-element">
+            <input type="text" name="adress" id="adress" value="" class="k-textbox"></dd>
+        <dt id="city-label"><label for="city" class="required">Cidade:</label></dt>
+        <dd id="city-element">
+            <input type="text" name="city" id="city" value="" class="k-textbox"></dd>
+        <dt id="state-label"><label for="state" class="required">Produto:</label></dt>
+        <dd id="state-element">
+            <input type="text" name="state" id="state" value="" class="k-textbox"></dd>
+        <dt id="cep-label"><label for="cep" class="required">CEP:</label></dt>
+        <dd id="cep-element">
+            <input type="text" name="cep" id="cep" value="" class="k-textbox"></dd>
+        <dt id="email-label"><label for="email" class="required">E-mail:</label></dt>
+        <dd id="email-element">
+            <input type="text" name="email" id="email" value="" size="40" class="k-textbox"></dd>
+        <dt id="phone-label"><label for="phone" class="required">Telefone:</label></dt>
+        <dd id="phone-element">
+            <input type="text" name="phone" id="phone" value="" class="k-textbox"></dd>
+        <dt id="cellphone-label"><label for="cellphone" class="optional">Celular:</label></dt>
+        <dd id="cellphone-element">
+            <input type="text" name="cellphone" id="cellphone" value="" class="k-textbox"></dd>
+        <dt id="password-label"><label for="password" class="required">Senha:</label></dt>
+        <dd id="password-element">
+            <input type="password" name="password" id="password" value="" class="k-textbox"></dd>
+        <dt id="submit-label">&#160;</dt><dd id="submit-element">
+        <input type="submit" name="submit" id="submit" value="Entrar" class="k-button"></dd></dl></form>
+
+    <script>
+        $(document).ready(function() {
+
+
+            // Kendo UI
+            $("#nomeloja").width(500);
+            $("#razaosocial").width(500);
+            $("#adress").width(500);
+            $("#cep").width(100);
+            $("#phone").width(120);
+            $("#cellphone").width(120);
+
+            $("#state").kendoComboBox({
+                dataSource: dsStates,
+                placeholder: "Estado..."
+
+            })
+
+            // Mascaras
+            $("#cnpj").mask("99.999.999/9999-99");
+            $("#insc").mask("9999999-99");
+            $("#cep").mask("99.999-999");
+            $("#phone").mask("(99) 9999-9999");
+            $("#cellphone").mask("(99) 99999-9999");
+
+
+        });
+    </script>
+
+    ﻿
+    </div>
+
+</div>
+</div>
+{% endblock %}
