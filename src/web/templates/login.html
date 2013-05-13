@@ -33,15 +33,15 @@
                                         <h3>Acesse a Área do Lojista</h3>
                                         <p>Se já é um Lojista cadastrado,<br/> acesse abaixo:</p>
 
-                                        <form enctype="application/x-www-form-urlencoded" method="post" action="/login"><dl class="zend_form">
-                                            <dt id="email-label"><label for="email" class="required">E-mail:</label></dt>
-                                            <dd id="email-element">
-                                                <input type="text" name="email" id="email" value="" size="40" class="k-textbox"></dd>
-                                            <dt id="password-label"><label for="password" class="required">Senha:</label></dt>
-                                            <dd id="password-element">
-                                                <input type="password" name="password" id="password" value="" class="k-textbox"></dd>
-                                            <dt id="submit-label">&#160;</dt><dd id="submit-element">
-                                            <input type="submit" name="submit" id="submit" value="Entrar" class="k-button"></dd></dl></form>
+                                        <form action="{{ url_salvar }}" method="post" >
+                                                <fieldset>
+                                                    <legend>Dados Pessoais</legend>
+                                                    Nome: <input type="text" name="nome" /><br/>
+                                                    Email: <input type="email" name="email" value="{{ email }}" /><br/>
+                                                </fieldset>
+                                                <button>Salvar</button>
+                                            </form>
+
                                     </td>
 
                                     <td valign="top">

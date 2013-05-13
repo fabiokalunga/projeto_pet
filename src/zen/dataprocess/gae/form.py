@@ -25,17 +25,17 @@ def choice_validator_generator(choices):
 
 def _handle_db_propert_attrs(ppt,validator=lambda v: None):
     if ppt._required:
-        validator= validation.composition(validation.required_str,\
-                validator)
+        validator= validation.composition(validation.required_str, \
+                                          validator)
     if ppt._choices:
-        validator= validation.composition(choice_validator_generator(ppt._choices),\
-                validator)
+        validator= validation.composition(choice_validator_generator(ppt._choices), \
+                                          validator)
     return validator
 
 def boolean_validator_generator(ppt):
     return _handle_db_propert_attrs(ppt,validation.boolean_validator)
-    
-    
+
+
 def int_validator_generator(ppt):
     return _handle_db_propert_attrs(ppt,validation.int_validator)
 
@@ -50,21 +50,21 @@ def string_validator_generator(ppt):
     return _handle_db_propert_attrs(ppt)
 
 
-DEFAULT_VALIDATORS={ndb.BooleanProperty:boolean_validator_generator,\
-    ndb.IntegerProperty:int_validator_generator,\
-    ndb.FloatProperty:float_validator_generator,\
-    ndb.DateProperty:date_validator_generator,\
-    ndb.DateTimeProperty:date_validator_generator,\
-    ndb.StringProperty:string_validator_generator
-    }
+DEFAULT_VALIDATORS={ndb.BooleanProperty:boolean_validator_generator, \
+                    ndb.IntegerProperty:int_validator_generator, \
+                    ndb.FloatProperty:float_validator_generator, \
+                    ndb.DateProperty:date_validator_generator, \
+                    ndb.DateTimeProperty:date_validator_generator, \
+                    ndb.StringProperty:string_validator_generator
+}
 
-DEFAULT_TRANSFORMATIONS={ndb.BooleanProperty:trans.to_boolean,\
-    ndb.FloatProperty:trans.to_float,\
-    ndb.IntegerProperty:trans.to_int,\
-    ndb.StringProperty:trans.to_none,\
-    ndb.DateProperty:trans.brdate,\
-    ndb.DateTimeProperty:trans.brdate,\
-    prop.PasswordProperty:lambda k: prop.Password(pw=k)}
+DEFAULT_TRANSFORMATIONS={ndb.BooleanProperty:trans.to_boolean, \
+                         ndb.FloatProperty:trans.to_float, \
+                         ndb.IntegerProperty:trans.to_int, \
+                         ndb.StringProperty:trans.to_none, \
+                         ndb.DateProperty:trans.brdate, \
+                         ndb.DateTimeProperty:trans.brdate, \
+                         prop.PasswordProperty:lambda k: prop.Password(pw=k)}
 
 def _validate_generator(ppt):
     def validate(value):
@@ -99,7 +99,7 @@ formBase='''
                 class="help-inline">{{errors.%(value)s|default('',true)}}</span>
             </div>    
             </div>
-          ''' 
+          '''
 
 class Form():
     ''' Base class used to validate,
@@ -118,7 +118,7 @@ class Form():
             return result
         self.validators=reduce(f,foundProps,{})
         self.requestValidator=requestValidator
-        
+
     def validate(self,request):
         def f(errors,key):
             er=self.validators[key](request.get(key))
@@ -129,22 +129,22 @@ class Form():
         if self.requestValidator:
             allErrors.update(self.requestValidator(request))
         return allErrors
-    
+
     def transform(self,request):
         "Returns a transformed _processors dict"
         return {k:t(request.get(k)) for k,t in self.transformations.iteritems()}
-    
+
     def fill(self,request,model_instace):
         ''' fill a model instance with transformed request _processors
         '''
         def f(m,key):
             val=self.transformations[key](request.get(key))
-            setattr(m, key, val) 
+            setattr(m, key, val)
             return m
         model=reduce(f,self.transformations.keys(),model_instace)
         return model
 
-    
+
     def html(self,prefix=""):
         '''Return a horizontal html form based on Twitter Bootstrap CSS
         '''
@@ -154,10 +154,10 @@ class Form():
             d["value"]=p
             form+=formBase%d
 
-        return form+'</fieldset><div class="form-actions"><input type="submit" value="Salvar" class="btn btn-primary" /></div></form>' 
+        return form+'</fieldset><div class="form-actions"><input type="submit" value="Salvar" class="btn btn-primary" /></div></form>'
 
 
-    
+
     def request_dict(self, request):
         ''' Return a dict containing the _processors defined on form
         '''

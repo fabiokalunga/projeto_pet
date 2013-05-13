@@ -8,7 +8,7 @@ from webapp2_extras import security
 class BaseStringProperty(ndb.StringProperty):
     def transformation(self,value):
         return value
-  
+
     def validation(self,value):
         raise NotImplemented("Must be implemented")
     def _validate(self, value):
@@ -20,16 +20,16 @@ class BaseStringProperty(ndb.StringProperty):
 class BaseIntegerProperty(ndb.IntegerProperty):
     def transformation(self,value):
         return value
-  
+
     def validation(self,value):
         raise NotImplemented("Must be implemented")
-    
+
     def _validate(self, value):
         error=self.validation(value)
         if error:
             raise BadValueError((error+' :%s') % str(value))
         return self.transformation(value)
-    
+
 
 class CEPProperty(BaseStringProperty):
     def validation(self, value):
@@ -64,20 +64,20 @@ class Password(object):
             self.hs=hs
         else:
             self.hs=security.generate_password_hash(pw,pepper=pepper)
-            
+
     def __eq__(self,y):
         return self.hs==y.hs
-            
+
     def __hash__(self, *args, **kwargs):
         return hash(self.hs)
 
-    
+
     def check(self, pw,pepper=None):
         return security.check_password_hash(pw, self.hs, pepper)
-      
-    
-    
-        
+
+
+
+
 
 
 class PasswordProperty(ndb.StringProperty):

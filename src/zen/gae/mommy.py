@@ -154,6 +154,6 @@ def assignable(name,property):
 def make_one(cls,**kwargs):
     properties=cls._properties
     generated_kwargs={k:_generate_default(v,cls) for k,v in properties.iteritems()
-                    if assignable(k,v) and not k in kwargs}
+                      if assignable(k,v) and not k in kwargs}
     generated_kwargs.update(kwargs)
     return cls(**generated_kwargs)

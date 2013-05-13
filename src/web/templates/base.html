@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Projeto BDInt da Fatec</title>
+    <title>Projeto Pet - BDInt Fatec 2013</title>
 
     <link type="text/css" rel="stylesheet" href="/static/css/paging.css"/>
     <link type="text/css" rel="stylesheet" href="/static/css/default.css"/>
@@ -29,14 +29,31 @@
         <div class="navbar navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
+            {% if current_user %}
             <ul class="nav">
                 <li {% if selected_tab=="HOME" %}class="active" {% endif %}><a href="/">Home</a></li>
                 <li {% if selected_tab=="logista" %}class="active" {% endif %} ><a href="/login">Area do Lojista</a></li>
-                <li {% if selected_tab=="produto" %}class="active" {% endif %} ><a href="/produto">Produtos</a></li>
+                <li {% if selected_tab=="produto" %}class="active" {% endif %} ><a href="/geo/produto/listar">Produtos</a></li>
                 <li {% if selected_tab=="contato" %}class="active" {% endif %} ><a href="/contato">Contato</a></li>
                 <li {% if selected_tab=="administra" %}class="active" {% endif %} ><a href="/geo/produto/listar">Administrador</a></li>
+             </ul>
+            {% else %}
+            <ul class="nav">
+                <li {% if selected_tab=="HOME" %}class="active" {% endif %}><a href="/">Home</a></li>
+                <li {% if selected_tab=="logista" %}class="active" {% endif %} ><a href="/login">Area do Lojista</a></li>
+                <li {% if selected_tab=="produto" %}class="active" {% endif %} ><a href="/geo/produto/listar">Produtos</a></li>
+                <li {% if selected_tab=="contato" %}class="active" {% endif %} ><a href="/contato">Contato</a></li>
+             </ul>
+            {% endif %}
 
--               </ul>
+            <span class="pull-right" style="border: none;">
+        {% if current_user %}
+            {{  current_user.nome}}
+            <a class="btn btn-danger" href="{{  logout_url}}">Logout</a>
+        {% else %}
+            <a class="btn btn-primary" href="{{  login_url}}">Login</a>
+        {% endif %}
+        </span>
         </div>
     </div>
 </div>

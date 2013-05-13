@@ -108,7 +108,7 @@ def _maybe_import(package, path_slices, convention_params, **kwargs):
 def to_handler(path,convention_params={},**kwargs):
     decoded_path = urllib.unquote(path)
     path_slices = [d for d in decoded_path.split("/") if d!=""]
-#    Try importing package.handler.method
+    #    Try importing package.handler.method
     return _maybe_import(package_base,path_slices,convention_params,**kwargs)
 
 

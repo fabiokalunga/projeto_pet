@@ -28,7 +28,7 @@ def brcurrency(value, removesignal=False):
         num=value+num
 
     return (not removesignal and "R$ " or "") + num
-    
+
 def brphone(phone):
     if not phone:
         return u""
@@ -56,20 +56,20 @@ class _BR_tzinfo(datetime.tzinfo):
             return datetime.timedelta(hours=0)
         else:
             return datetime.timedelta(hours=1)
-        
+
     def tzname(self, dt):
         if self.dst(dt) == datetime.timedelta(hours=0):
             return "BST"
         else: return "BDT"
-        
+
 class _UTC(datetime.tzinfo):
     def utcoffset(self, dt):
         return self.dst(dt)
 
     def dst(self, dt):
         return datetime.timedelta(hours=0)
-        
-        
+
+
     def tzname(self, dt):
         return "UTC"
 
@@ -97,17 +97,17 @@ def brdate_no_locale(dt,strf="%d/%m/%y - %H:%M:%S"):
             return dt.strftime(strf)
         return dt
     return ""
-  
+
 def cep(c):
     if (c is not None) and len(c) > 5:
         c = c[0:5] + u"-" + c[5:]
-        return c 
+        return c
     return c
 
 def cpf(c):
-    c=None if c is None else str(c) 
+    c=None if c is None else str(c)
     if (c is not None) and len(str(c)) == 11:
         c = c[0:3] + u"." +c[3:6]+u"."+c[6:9] +u"-"+ c[9:]
-        return c 
+        return c
     return c
 

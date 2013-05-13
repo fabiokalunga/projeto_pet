@@ -115,12 +115,18 @@
                 <li><a href="lista">Banho e Tosa<ul></ul></a></li>
                 <ul>
                     <script> $("#left-menu").kendoTreeView()</script>
+       </ul>
+                </ul>
         </section>
     </div>
 
     <div CLASS="span8">
 <br/><br/>
+
+        {% if current_user %}
         <td><a class="btn btn-primary" href="/geo/produto/form" >Novo Produto</a></td>
+       {% endif %}
+
 <br/><br/>
 
 <table id="tb1">
@@ -137,7 +143,7 @@
 
     </tr>
     </thead>
-    {% for e in estados %}
+    {% for e in produto %}
     <tr data-id="{{ e.key.id() }}">
 
         <td><img  src="/static/img/noimage.jpg"/></td>
@@ -147,9 +153,11 @@
         <td>{{ e.sigla }}</td>
         <td>{{ e.ddd }}</td>
         <td>{{ e.preco }}</td>
+        {% if current_user %}
         <td><a class="btn btn-primary" href="{{ editar_url }}/{{ e.key.urlsafe() }}" >Editar</a></td>
         <td><button  class="btn btn-danger btn-erase" data-id="{{ e.key.id() }}">Apagar</button></td>
         <td><img data-id="{{ e.key.id() }}" class="loader" src="/static/img/blueloader.gif" /></td>
+        {% endif %}
 
     </tr>
     {% endfor %}

@@ -16,13 +16,13 @@ def not_none_or_empty_str(func):
         if value is None or value=="":
             return to_none(value)
         return func(value)
-    return functools.update_wrapper(f,func)    
+    return functools.update_wrapper(f,func)
 
 @not_none_or_empty_str
 def to_boolean(value):
-        value=value.upper()
-        return value=="TRUE"
-    
+    value=value.upper()
+    return value=="TRUE"
+
 @not_none_or_empty_str
 def to_float(value):
     value=value.replace(".","")
@@ -72,11 +72,11 @@ def to_link(link):
         return link
     return "http://"+link
 
-        
+
 def composition(*transforms):
     def f(nextTransform,currentTransform):
         return lambda value: currentTransform(nextTransform(value))
-    return reduce(f,transforms,lambda value:value)    
+    return reduce(f,transforms,lambda value:value)
 
 @not_none_or_empty_str
 def brcurrency(value):

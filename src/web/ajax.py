@@ -12,11 +12,3 @@ def index(resp,texto):
     js=json.dumps(dct)
     resp.write(js)
 
-import datetime
-
-from couchdbkit import *
-
-class Greeting(Document):
-    author = StringProperty()
-    content = StringProperty()
-    date = DateTimeProperty()

@@ -1,7 +1,7 @@
 {% extends "/templates/base.html" %}
 {% block navbar %}{{ create_navbar("FORM") }} {% endblock %}
 {% block content %}
-{% set estado=estado or None %}
+{% set produto=produto or None %}
 <div class="row">
 
     <div class="span3">
@@ -28,14 +28,14 @@
     <fieldset>
         <legend>Cadastro de Produtos</legend>
 
-        Nome: <input type="text" name="nome" value="{{ estado.nome }}" /><br/>
-        Categoria: <input type="text" name="categ" value="{{ estado.categ }}" /><br/>
-        Descricao: <input type="text" name="sigla" value="{{ estado.sigla }}" /><br/>
-        Preco: <input type="text" name="preco" value="{{ estado.preco }}" /><br/>
+        Nome: <input type="text" name="nome" value="{{ produto.nome }}" /><br/>
+        Categoria: <input type="text" name="categ" value="{{ produto.categ }}" /><br/>
+        Descricao: <input type="text" name="sigla" value="{{ produto.sigla }}" /><br/>
+        Preco: <input type="text" name="preco" value="{{ produto.preco }}" /><br/>
         <br />
-        Codigo:<input type="text" name="ddd" value="{{ estado.ddd }}" />
-        {% if estado %}
-        <input type="hidden" name="id" value="{{ estado.key.id() }}" />
+        Codigo:<input type="text" name="ddd" value="{{ produto.ddd }}" />
+        {% if produto %}
+        <input type="hidden" name="id" value="{{ produto.key.id() }}" />
         {% endif %}
     </fieldset>
     <button>Salvar</button>

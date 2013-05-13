@@ -1,4 +1,4 @@
-application: projetopetweb
+application: projetoweb
 version: 1
 runtime: python27
 api_version: 1
@@ -23,8 +23,12 @@ handlers:
   static_files: web/\1static\2
   upload: web/.*static.*
 
-- url: .*
+
+- url: /logado.*
+  login: admin
   script: zen.gae.convention.app
 
+- url: .*
+  script: zen.gae.convention.app
 
 
